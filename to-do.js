@@ -6,4 +6,4 @@ let toDo = [
     'Fazer café',
     'Estudar JavaScript',
     'Acessar comunidade da Rocketseat'
-]
+];
