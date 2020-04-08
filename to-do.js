@@ -1,12 +1,7 @@
 var listElement = document.querySelector('#app ul'),
     inputElement = document.querySelector('#app input'),
-    buttonElement = document.querySelector('#app button');
-
-var toDos = [
-    'Fazer café',
-    'Estudar JavaScript',
-    'Acessar comunidade da Rocketseat'
-];
+    buttonElement = document.querySelector('#app button'),
+    toDos = JSON.parse(localStorage.getItem('listToDos')) || [];
 
 function renderToDos() {
 
@@ -32,11 +27,17 @@ function addToDo() {
     toDos.push(toDoText)
     inputElement.value = '';
     renderToDos();
+    saveToStorage();
 }
 
 function deletToDo(position) {
     toDos.splice(position, 1);
     renderToDos();
+    saveToStorage();
+}
+
+function saveToStorage() {
+    localStorage.setItem('listToDos', JSON.stringify(toDos));
 }
 
 buttonElement.onclick = addToDo;
