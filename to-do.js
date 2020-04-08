@@ -1,21 +1,32 @@
-let listElement = document.querySelector('#app ul'),
+var listElement = document.querySelector('#app ul'),
     inputElement = document.querySelector('#app input'),
     buttonElement = document.querySelector('#app button');
 
-let toDos = [
+var toDos = [
     'Fazer café',
     'Estudar JavaScript',
     'Acessar comunidade da Rocketseat'
 ];
 
 function renderToDos() {
+
+    listElement.innerHTML = '';
+    
     for (toDo of toDos) {
-        let toDoElement = document.createElement('li'),
+        var toDoElement = document.createElement('li'),
             toDoText = document.createTextNode(toDo);
 
         toDoElement.appendChild(toDoText);
-        listElement.appendChild(toDoElement)
+        listElement.appendChild(toDoElement);
     }
 }
 
-renderToDos()
+function addToDo() {
+    let toDoText = inputElement.value;
+    toDos.push(toDoText)
+    inputElement.value = '';
+    renderToDos();
+}
+
+buttonElement.onclick = addToDo;
+renderToDos();
